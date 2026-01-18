@@ -1,0 +1,39 @@
+.section {
+  border-top: 1px solid var(--border);
+  padding-bottom: 6rem;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.text {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+.link svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
