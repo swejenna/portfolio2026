@@ -5,7 +5,7 @@ export default function NavBar() {
   return (
     <nav className={styles.nav}>
       <div className={styles.inner}>
-        <a href="#" className={styles.logo}>JD</a>
+        <a href="#" className={styles.logo}>JH</a>
         <div className={styles.links}>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
