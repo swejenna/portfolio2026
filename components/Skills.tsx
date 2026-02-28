@@ -3,7 +3,7 @@ import styles from './Skills.module.css';
 const skills = [
   'JavaScript',
   'Python',
-  'Java',
+  'C#/.NET',
   'React',
   'Angular',
   'Next.js',
