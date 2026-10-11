@@ -1,0 +1,19 @@
+* text=auto
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.zip binary
+*.pdf binary
+*.exe binary
+
+# Force LF for these text files
+*.sh eol=lf
+*.yml eol=lf
+*.yaml eol=lf
+*.json eol=lf
+*.ts eol=lf
+*.tsx eol=lf
+*.js eol=lf
+*.jsx eol=lf
+*.css eol=lf
