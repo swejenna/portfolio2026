@@ -15,11 +15,51 @@
   margin-bottom: 2rem;
 }
 
+/* Resume inline row */
+.resumeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.resumeText {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.1;
+}
+
+.resumeLink {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.1;
+}
+.resumeLink:hover { color: var(--accent); border-color: var(--accent); }
+
 .links {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
 }
+
+/* smaller per-section heading to align with inline row */
+.resumeHeading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding-right: 0.75rem;
+  line-height: 1.1;
+}
+
+.resumeLeft { display: flex; align-items: center; }
+.resumeRight { display: flex; align-items: center; gap: 0.75rem; }
 
 .link {
   display: flex;

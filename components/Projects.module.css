@@ -8,45 +8,196 @@
   margin-bottom: 2rem;
   color: var(--text-primary);
 }
-
-.grid {
-  display: grid;
-  gap: 1.5rem;
+.timeline {
+  position: relative;
+  margin-top: 1rem;
 }
 
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(0,212,255,0.06), rgba(0,153,204,0.04));
+  border-radius: 999px;
+}
+
+.marker {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0.5rem;
+}
+
+.marker .stud {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--tron-blue), rgba(0,212,255,0.25));
+  border: 2px solid rgba(255,255,255,0.06);
+  margin: 4px auto 0 auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
 }
 
 .card {
   display: block;
-  background: var(--bg-secondary);
+  background: linear-gradient(180deg, var(--bg-secondary), var(--bg-tertiary));
   border: 1px solid var(--border);
-  padding: 1.5rem;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  width: 48%;
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 160ms ease;
 }
 
-.card:hover {
+.card:focus,
+.item:hover .card {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.45);
   border-color: var(--accent);
 }
 
-.card:hover .title {
-  color: var(--accent);
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Positioning for left (experience) and right (project) items */
+.item.left .card {
+  margin-right: auto;
+  margin-left: 0;
+}
+.item.right .card {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* info button */
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.infoBtn {
+  background: var(--tron-blue);
+  color: var(--white);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: inline-grid;
+  place-items: center;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.infoBtn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+.infoBtn:focus { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* expanded state triggered by class applied from JS */
+.card.expanded .description {
+  opacity: 1;
+  transform: rotateX(0) translateY(0);
+  max-height: 400px;
+}
+
+/* subtle flip animation */
+.description {
+  transform-origin: top;
+  backface-visibility: hidden;
+  transform: rotateX(-8deg) translateY(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .description { transition: none; transform: none; }
+  .infoBtn { transition: none; }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.subHeading {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
   color: var(--text-primary);
 }
 
-.description {
+.titleRule {
+  height: 2px;
+  width: 40px;
+  background: rgba(150,150,150,0.12);
+  margin-top: 6px;
+  margin-bottom: 6px;
+  border-radius: 2px;
+}
+
+.company {
   font-size: 0.9rem;
   color: var(--text-secondary);
-  margin-bottom: 1rem;
-  line-height: 1.5;
+}
+
+.time {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.card:focus .description,
+.card:hover .description,
+.item:focus-within .description {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 400px;
 }
 
 .tech {
@@ -58,6 +209,22 @@
 .tech span {
   font-size: 0.75rem;
   color: var(--accent);
-  background: var(--bg-tertiary);
+  background: rgba(0,212,255,0.04);
   padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+  .list {
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile: stack items and move timeline to left */
+@media (max-width: 767px) {
+  .timeline::before { left: 12px; transform: none; }
+  .marker { position: relative; left: 0; transform: translateX(-3px); top: 0; margin-right: 0.5rem; }
+  .card { width: 100%; margin: 0; }
+  .item { align-items: center; }
+  .item.left .card, .item.right .card { margin: 0; }
 }
