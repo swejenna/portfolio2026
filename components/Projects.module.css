@@ -170,6 +170,40 @@
   border-radius: 2px;
 }
 
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+.card.featured {
+  box-shadow: 0 24px 60px rgba(0,212,255,0.12), 0 0 32px rgba(0,212,255,0.06) inset;
+  border-color: rgba(0,212,255,0.35);
+  transform-origin: center;
+}
+
+.star {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: radial-gradient(circle at 30% 30%, #fff8, transparent 40%), linear-gradient(180deg,#ffd54f,#ffb300);
+  color: #222;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 28px;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.24);
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 0px rgba(0,212,255,0.14); }
+  50% { box-shadow: 0 0 24px rgba(0,212,255,0.18); }
+  100% { box-shadow: 0 0 0px rgba(0,212,255,0.12); }
+}
+
+.card.featured .description { animation: glowPulse 3s ease-in-out infinite; }
+
 .company {
   font-size: 0.9rem;
   color: var(--text-secondary);

@@ -77,3 +77,13 @@
   width: 1.25rem;
   height: 1.25rem;
 }
+
+/* small centered resume note under the resume row */
+.resumeNote {
+  max-width: 680px;
+  margin: 0.75rem auto 0;
+  font-style: italic;
+  text-align: center;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}

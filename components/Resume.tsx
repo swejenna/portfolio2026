@@ -15,6 +15,9 @@ export default function Resume() {
           </a>
         </div>
       </div>
+      <p className={styles.resumeNote}>
+        This is my master resume and is over two pages long. It is formatted to federal resume standards and commonly reduced for specific applications to include only pertinent experience.
+      </p>
     </section>
   );
 }
